@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ChessGame from "./components/Chessboard";
+import AISelection from "./components/AISelection";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+
+const App = () => {
+  const [selectedAI, setSelectedAI] = useState("");
+  const [apiKey, setApiKey] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <ToastContainer />
+      <h1>Chess with AI</h1>
+      <AISelection selectedAI={selectedAI} setSelectedAI={setSelectedAI} apiKey={apiKey} setApiKey={setApiKey} />
+      <ChessGame selectedAI={selectedAI} apiKey={apiKey} />
     </div>
   );
-}
+};
 
 export default App;
