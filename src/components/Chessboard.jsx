@@ -2,22 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { fetchAIMove } from "../api";
-import { toast } from "react-toastify"; // Import react-toastify
+import { toast } from "react-toastify";
 
 const ChessGame = ({ selectedAI, apiKey }) => {
   const [game, setGame] = useState(new Chess());
-  const [playerColor, setPlayerColor] = useState("w");
   const [isAIThinking, setIsAIThinking] = useState(false);
 
   const getTurnMessage = () => {
     const turn = game.turn();
-    return turn === playerColor
+    return turn === "w"
       ? "Your turn!"
       : `${selectedAI ? `${selectedAI}'s` : "AI's"} turn...`;
   };
 
   const makeAIMove = async () => {
-    if (game.turn() === playerColor || !selectedAI) return; // Prevent AI move in human vs human mode
+    if (game.turn() === "w" || !selectedAI) return;
 
     setIsAIThinking(true);
     const fen = game.fen();
@@ -29,7 +28,7 @@ const ChessGame = ({ selectedAI, apiKey }) => {
 
       if (!aiMove || !aiMove.from || !aiMove.to) {
         console.error("AI returned an invalid move:", aiMove);
-        toast.error("AI returned an invalid move!"); // Toast error
+        toast.error("AI returned an invalid move!");
         setIsAIThinking(false);
         return;
       }
@@ -43,7 +42,7 @@ const ChessGame = ({ selectedAI, apiKey }) => {
 
       if (!validMove) {
         console.error("AI attempted an illegal move:", aiMove);
-        toast.error("AI attempted an illegal move!"); // Toast error
+        toast.error("AI attempted an illegal move!");
         setIsAIThinking(false);
         return;
       }
@@ -60,7 +59,7 @@ const ChessGame = ({ selectedAI, apiKey }) => {
 
   const onDrop = (sourceSquare, targetSquare) => {
     const newGame = new Chess(game.fen());
-    const piece = newGame.get(sourceSquare); // Get the piece at source
+    const piece = newGame.get(sourceSquare);
 
     if (!piece) {
       console.error("No piece at source:", sourceSquare);
@@ -87,8 +86,7 @@ const ChessGame = ({ selectedAI, apiKey }) => {
 
     setGame(newGame);
 
-    // AI's turn after player move
-    if (newGame.turn() !== playerColor) {
+    if (newGame.turn() !== "w") {
       setTimeout(() => makeAIMove(), 1000);
     }
 
@@ -96,10 +94,10 @@ const ChessGame = ({ selectedAI, apiKey }) => {
   };
 
   useEffect(() => {
-    if (game.turn() !== playerColor && selectedAI) {
-      makeAIMove(); // Ensure AI makes a move only when it's their turn
+    if (game.turn() !== "w" && selectedAI) {
+      makeAIMove();
     }
-  }, [game, selectedAI, playerColor]);
+  }, [game, selectedAI]);
 
   return (
     <div className="chess-container">
