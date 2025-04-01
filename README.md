@@ -30,7 +30,7 @@ You can try the deployed app here:
 To get started, clone the repository to your local machine.
 
 ```bash
-git clone https://github.com/your-username/chess-ai.git
+git clone https://github.com/prachinarde/chess-ai-app.git
 cd chess-ai
 ```
 
