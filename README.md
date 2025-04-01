@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Chess with AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows users to play chess against an AI. Users can choose from multiple AI providers, including Gemini, GPT, and Cohere. The app features a chessboard with interactive gameplay and integrates real-time AI moves.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+You can try the deployed app here:  
+[Chess AI Demo](https://chess-ai-aoocbx92m-prachi-nardes-projects.vercel.app/)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Play chess against different AI providers: Gemini, GPT, and Cohere.
+- Real-time chess move suggestions.
+- Interactive chessboard using the `react-chessboard` library.
+- Toast notifications for error handling and move alerts.
+- Responsive user interface.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React.js** for the frontend.
+- **Chess.js** for chess game logic.
+- **React Chessboard** for rendering the chessboard.
+- **React Toastify** for toast notifications.
+- **Fetch API** for making API calls to fetch AI moves.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup Instructions
 
-### `npm run build`
+### 1. Clone the repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get started, clone the repository to your local machine.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/your-username/chess-ai.git
+cd chess-ai
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Install Dependencies
 
-### `npm run eject`
+Run the following command to install the required dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Run the Development Server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To start the local development server, run:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+Visit `http://localhost:3000` in your browser to see the application in action.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Build the Project for Production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To create an optimized production build, run:
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The optimized files will be generated in the `build/` directory.
 
-### Analyzing the Bundle Size
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This app is hosted on Vercel. To deploy your own version:
 
-### Making a Progressive Web App
+1. Create an account on [Vercel](https://vercel.com).
+2. Link your GitHub repository to Vercel.
+3. Deploy the app by following Vercel's deployment instructions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## AI Providers
 
-### Advanced Configuration
+- **Gemini**  
+  API: [https://api.gemini.com/v1/move](https://api.gemini.com/v1/move)  
+  Fetches the best move based on the provided FEN (chessboard position).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **GPT**  
+  API: [https://api.openai.com/v1/chat/completions](https://api.openai.com/v1/chat/completions)  
+  Uses GPT-4 to suggest a move based on a provided FEN.
 
-### Deployment
+- **Cohere**  
+  API: [https://api.cohere.ai/generate](https://api.cohere.ai/generate)  
+  Provides chess move suggestions based on a prompt.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Troubleshooting
 
-### `npm run build` fails to minify
+If you encounter issues related to missing or invalid API keys, check the respective AI provider's documentation for obtaining a valid API key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ensure that all dependencies are correctly installed by running `npm install`.
